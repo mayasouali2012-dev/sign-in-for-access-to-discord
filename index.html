@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mayas Tech | Roblox Studio Team</title>
+
+<!-- Cloudflare Turnstile -->
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #0b1a24, #142c3a);
+    color: white;
+    padding: 20px;
+}
+
+.container {
+    max-width: 720px;
+    background: #0f141a;
+    padding: 30px;
+    border-radius: 14px;
+    margin: auto;
+    box-shadow: 0 0 30px rgba(0,0,0,0.9);
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.logo img {
+    width: 80px;
+}
+
+.rules {
+    background: #161b22;
+    padding: 18px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-top: 14px;
+    font-weight: bold;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    border-radius: 6px;
+    border: none;
+    background: #1c222b;
+    color: white;
+}
+
+textarea { resize: none; }
+
+button {
+    margin-top: 20px;
+    padding: 14px;
+    width: 100%;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    transition: 0.2s;
+}
+
+button:hover { opacity: 0.9; }
+
+.agree-btn {
+    background: #2ecc71;
+    color: black;
+}
+
+.submit-btn {
+    background: #3498db;
+    color: white;
+}
+
+.discord-btn {
+    background: #5865F2;
+    color: white;
+}
+
+.hidden { display: none; }
+
+.security-note {
+    font-size: 12px;
+    opacity: 0.7;
+    margin-top: 20px;
+    text-align: center;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="logo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Roblox_Studio_logo.png" alt="Roblox Studio">
+    <h2>Mayas Tech</h2>
+    <p>Roblox Studio Development Team</p>
+</div>
+
+<!-- RULES -->
+<div id="rulesSection">
+<h3>Rules</h3>
+<div class="rules">
+<ul>
+<li>Be respectful</li>
+<li>No stealing assets or scripts</li>
+<li>No exploiting or cheating</li>
+<li>Follow Roblox Terms of Service</li>
+</ul>
+</div>
+
+<button class="agree-btn" onclick="agreeRules()">I Agree to the Rules</button>
+</div>
+
+<!-- FORM -->
+<div id="formSection" class="hidden">
+<label>Roblox Username</label>
+<input type="text" required maxlength="20">
+
+<label>Roblox Studio Experience</label>
+<input type="text" required maxlength="30">
+
+<label>What do you know about Roblox Studio?</label>
+<textarea maxlength="300" required></textarea>
+
+<label>Lua scripting experience</label>
+<textarea maxlength="300"></textarea>
+
+<button class="submit-btn" onclick="goToVerification()">Submit Application</button>
+</div>
+
+<!-- CLOUDFLARE VERIFY -->
+<div id="verifySection" class="hidden">
+<h3>Human Verification</h3>
+
+<div class="cf-turnstile"
+     data-sitekey="YOUR_SITE_KEY_HERE"
+     data-callback="turnstileVerified">
+</div>
+</div>
+
+<!-- DISCORD -->
+<div id="discordSection" class="hidden">
+<h2>Verification Successful ✅</h2>
+<p>You can now join our Discord server</p>
+
+<a href="https://discord.gg/9zPhucExa" target="_blank" rel="noopener noreferrer">
+<button class="discord-btn">Join Mayas Tech Discord</button>
+</a>
+</div>
+
+<p class="security-note">
+Protected by Cloudflare Turnstile<br>
+No personal data is stored
+</p>
+
+</div>
+
+<script>
+function agreeRules() {
+    document.getElementById("rulesSection").classList.add("hidden");
+    document.getElementById("formSection").classList.remove("hidden");
+}
+
+function goToVerification() {
+    document.getElementById("formSection").classList.add("hidden");
+    document.getElementById("verifySection").classList.remove("hidden");
+}
+
+function turnstileVerified() {
+    document.getElementById("verifySection").classList.add("hidden");
+    document.getElementById("discordSection").classList.remove("hidden");
+}
+</script>
+
+</body>
+</html>
+
+
